@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
+import Data from './data.json';
 
 class App extends Component {
+
+  constructor() {
+    super()
+    this.state = {
+      data: Data
+    }
+  }
+
+  addNew = (event) => {
+    event.preventDefault()
+    console.log("The button works!")
+  }
+
   render() {
     return (
       <div className="App">
@@ -18,8 +32,11 @@ class App extends Component {
           <div className="col-sm-4"></div>
         </div>
         <div className="add-new">
-          <input type="text" className="input" placeholder="Type here"></input>
-          <button type="submit" className="btn btn-primary">Add new</button>
+          <div>
+            <input type="text" className="title-input" placeholder="Flashcard Subject"></input>
+            <input type="text" className="body-input" placeholder="Flashcard Body"></input>
+          </div>
+          <button type="submit" className="btn btn-primary" onClick={this.addNew}>Add new</button>
         </div>
       </div>
     );

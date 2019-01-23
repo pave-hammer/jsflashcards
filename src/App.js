@@ -8,19 +8,19 @@ class App extends Component {
           Hello World!
         <h1>JS Flashcards</h1>
         <div className="row">
-          <div className="col-sm-1">test</div>
-          <div className="card container">
-            <div className="card card-title">
-              Card Title
-            </div>
-            <div className="card card-body col-lg-6">
-              Card text goes here!
+          <div className="col-sm-4"></div>
+          <div className="card border border-dark col-sm-4">
+            <div className="card-body">
+              <h5 className="card-title">Flashcard title</h5>
+              <p className="card-text">Flashcard Body</p>
             </div>
           </div>
-          <div className="col-sm-1">test</div>
+          <div className="col-sm-4"></div>
         </div>
-        <input type="text" placeholder="Type here"></input>
-        <button type="submit">Submit</button>
+        <div className="add-new">
+          <input type="text" className="input" placeholder="Type here"></input>
+          <button type="submit" className="btn btn-primary">Add new</button>
+        </div>
       </div>
     );
   }

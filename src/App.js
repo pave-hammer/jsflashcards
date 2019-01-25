@@ -27,36 +27,6 @@ class App extends Component {
     })
   }
 
-  getNext = (id) => {
-    if(this.state.id > this.state.data.length - 1){
-      this.setState({
-        currentCard: this.state.data[id],
-        id: 0
-      })
-    } else {
-      this.setState({
-        currentCard: this.state.data[id],
-        id: this.state.id + 1,
-        userAnswer: "",
-        correctAnswer: false
-      })
-    }
-  }
-
-  // getPrev = (id) => {
-  //   if(this.state.id < 0){
-  //     this.setState({
-  //       currentCard: this.state.data[id],
-  //       id: this.state.data.length
-  //     })
-  //   } else {
-  //     this.setState({
-  //       currentCard: this.state.data[id],
-  //       id: this.state.id - 1
-  //     })
-  //   }
-  // }
-
   getText = (event) => {
     this.setState({
       userAnswer: event.target.value
@@ -77,8 +47,6 @@ class App extends Component {
           generateCard={this.generateCard}
           getText={this.getText}
           checkAnswer={this.checkAnswer}/>
-          {/* <button type="submit" onClick={() => this.getPrev(this.state.id)}>Previous</button> */}
-          <button type="submit" onClick={() => this.getNext(this.state.id)}>Next</button>
       </div>
     );
   }

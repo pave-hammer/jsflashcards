@@ -18,7 +18,6 @@ class App extends Component {
 
   generateCard = (event) => {
     event.preventDefault()
-    console.log(event.target.value)
     const getRandomNum = Math.floor(Math.random() * this.state.data.length)
     this.setState({
       currentCard: this.state.data[getRandomNum],

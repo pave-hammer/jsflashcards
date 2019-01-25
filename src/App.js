@@ -1,43 +1,52 @@
 import React, { Component } from 'react';
 import './App.css';
 import Data from './data.json';
+import Card from './components/card.js'
 
 class App extends Component {
 
   constructor() {
     super()
     this.state = {
-      data: Data
+      data: Data.methods.splice(1),
+      tags: Data.methods.shift(),
+      currentCard: "",
+      userAnswer: "",
+      correctAnswer: false
     }
   }
 
-  addNew = (event) => {
+  generateCard = (event) => {
     event.preventDefault()
-    console.log("The button works!")
+    console.log(event.target.value)
+    const getRandomNum = Math.floor(Math.random() * this.state.data.length)
+    this.setState({
+      currentCard: this.state.data[getRandomNum],
+      userAnswer: "",
+      correctAnswer: false
+    })
+  }
+
+  getText = (event) => {
+    this.setState({
+      userAnswer: event.target.value
+    })
+  }
+
+  checkAnswer = () => {
+    return this.state.userAnswer === this.state.currentCard.name ? this.setState({correctAnswer: true}) : ""
   }
 
   render() {
     return (
       <div className="App">
-          Hello World!
-        <h1>JS Flashcards</h1>
-        <div className="row">
-          <div className="col-sm-4"></div>
-          <div className="card border border-dark col-sm-4">
-            <div className="card-body">
-              <h5 className="card-title">Flashcard title</h5>
-              <p className="card-text">Flashcard Body</p>
-            </div>
-          </div>
-          <div className="col-sm-4"></div>
-        </div>
-        <div className="add-new">
-          <div>
-            <input type="text" className="title-input" placeholder="Flashcard Subject"></input>
-            <input type="text" className="body-input" placeholder="Flashcard Body"></input>
-          </div>
-          <button type="submit" className="btn btn-primary" onClick={this.addNew}>Add new</button>
-        </div>
+        <Card
+          currentCard={this.state.currentCard}
+          userAnswer={this.state.userAnswer}
+          correctAnswer={this.state.correctAnswer}
+          generateCard={this.generateCard}
+          getText={this.getText}
+          checkAnswer={this.checkAnswer}/>
       </div>
     );
   }
